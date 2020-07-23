@@ -1,0 +1,43 @@
+{
+  "name": "typescript-mongo-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "ts-node src/index.ts",
+    "clean": "rimraf ./dist",
+    "public": "ncp ./src/public ./dist/public",
+    "build": "npm run clean && tsc && npm run public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@moebius/http-graceful-shutdown": "^1.1.0",
+    "bcrypt": "^5.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.25",
+    "morgan": "^1.10.0",
+    "ncp": "^2.0.0",
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/express": "^4.17.7",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/mongoose": "^5.7.32",
+    "@types/morgan": "^1.9.1",
+    "@types/node": "^14.0.24",
+    "@types/passport": "^1.0.4",
+    "@types/passport-jwt": "^3.0.3",
+    "@types/winston": "^2.4.4"
+  }
+}
