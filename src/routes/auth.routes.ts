@@ -4,9 +4,9 @@ import * as userController from "../controllers/user.controller";
 const router = Router(); 
 
 router.route('/signup')
-    .get(userController.signUp);
+    .post(userController.signUp);
 
 router.route('/login') 
-    .get(userController.login);
+    .post(userController.login);
 
 export default router; 
