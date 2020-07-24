@@ -1,13 +1,14 @@
 import app from "./app"; 
 import "./database";
-import { GracefulShutdownManager } from "@moebius/http-graceful-shutdown";
 
+// Start listening app
 app.listen(app.get('port'), () => {
     console.log("Server running on port", app.get('port'));
 }); 
 
-process.on('SIGTERM', () => {
-    console.info('SIGTERM signal received.');
-  });
-
-// https://hackernoon.com/graceful-shutdown-in-nodejs-2f8f59d1c357
+// Kill all process listening on the server. See Gracefully shutting down
+process.on('SIGINT', function() {
+  console.log( "\nGracefully shutting down from SIGINT (Ctrl-C)" );
+  // some other closing procedures go here
+  process.exit(1);
+});
