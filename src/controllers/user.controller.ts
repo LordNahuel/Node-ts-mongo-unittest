@@ -50,3 +50,16 @@ function createToken(user: IUser) {
         expiresIn: '12h'
     } );
 }
+
+export const getAll = async (req: Request, res: Response) => {
+    try {
+        const users = await User.find();
+
+        if (!users) return res.status(status.OK).json({ message: "Doesn't have users saved" });
+        
+        res.send(status.OK).json(users);
+    } catch (error) {
+        logger.error("Error getting all users", error);
+        throw error; 
+    }
+}
