@@ -63,3 +63,7 @@ export const getAll = async (req: Request, res: Response) => {
         throw error; 
     }
 }
+
+export const hello = () => {
+    return "Hello World"; 
+}
