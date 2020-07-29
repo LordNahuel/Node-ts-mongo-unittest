@@ -1,34 +1,31 @@
 import chai, { expect } from "chai"; 
-import chaiHttp from "chai-http"; 
+// import chaiHttp from "chai-http";
+import fetch from "node-fetch";  
 import server from "../app"; 
-import { hello } from '../controllers/user.controller';
-import { doesNotMatch } from "assert";
-import { error } from "winston";
+import logger from "../common/logger";
 
-// Assertion Style 
-chai.should(); 
-
-chai.use(chaiHttp);
+// Assertion Style Chai Expect
 
 /**
- * Test methods
+ * This methods verify the user actions. 
  */
-describe('First test methods', () => {
-    it('should return Hello World!', () => {
-        const result = hello(); 
-        expect(result).equal("Hello World");
-    })
-
-    it("Status Should be 200", () => {
-        chai.request(server)
-            .get("/")
-            .then((res) => {     
-                expect(res).to.have.status(400);
-            })
-            .catch((err) => {
-                throw error; 
-            }) 
-    })
+describe('User methods', () => {
+    /**
+     * GET usercontroller getAll
+     * response.status should be 200
+     */
+    it("Status Should be 200", async () => {
+        try {
+            const response = await fetch('http://localhost:3000/auth/profile/getAll');
+            expect(response.status).to.be.equal(200);
+            const users = await response.json();
+            expect(users).to.be.an('Array');
+            expect(users.length).to.be.equal(1);    
+        } catch (error) {
+            logger.error("Error getting status response ", error);
+            throw error; 
+        }
+    }) 
 })
 
 //https://www.youtube.com/watch?v=I4BZQr-5mBY

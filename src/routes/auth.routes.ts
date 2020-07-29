@@ -11,8 +11,5 @@ router.route('/login')
 
 router.route('/getAll')
     .get(userController.getAll);
-
-router.route('/hello')
-    .get(userController.hello);
-
+    
 export default router; 

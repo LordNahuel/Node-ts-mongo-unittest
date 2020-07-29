@@ -57,13 +57,9 @@ export const getAll = async (req: Request, res: Response) => {
 
         if (!users) return res.status(status.OK).json({ message: "Doesn't have users saved" });
         
-        res.send(status.OK).json(users);
+        res.json(users);
     } catch (error) {
         logger.error("Error getting all users", error);
         throw error; 
     }
-}
-
-export const hello = () => {
-    return "Hello World"; 
 }
