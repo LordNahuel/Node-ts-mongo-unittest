@@ -8,7 +8,7 @@
     "start": "ts-node src/index.ts",
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc",
-    "test": "mocha -r ts-node/register 'tests/**/*.ts'"
+    "test": "mocha -r ts-node/register --watch 'src/test/**/*spec.ts'"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
     "mongoose": "^5.9.25",
     "morgan": "^1.10.0",
     "ncp": "^2.0.0",
+    "node-fetch": "^2.6.0",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
@@ -39,6 +40,7 @@
     "@types/mongoose": "^5.7.32",
     "@types/morgan": "^1.9.1",
     "@types/node": "^14.0.24",
+    "@types/node-fetch": "^2.5.7",
     "@types/passport": "^1.0.4",
     "@types/passport-jwt": "^3.0.3",
     "@types/winston": "^2.4.4",
