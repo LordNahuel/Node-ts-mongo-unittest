@@ -1,15 +1,13 @@
 import Router from "express";
+import * as authController from "../controllers/auth.controller";
 import * as userController from "../controllers/user.controller"; 
 
 const router = Router(); 
 
 router.route('/signup')
-    .post(userController.signUp);
+    .post(authController.signUp);
 
 router.route('/login') 
-    .post(userController.login);
+    .post(authController.login);
 
-router.route('/getAll')
-    .get(userController.getAll);
-    
 export default router; 

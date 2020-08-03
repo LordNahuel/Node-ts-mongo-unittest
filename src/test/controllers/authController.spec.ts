@@ -1,11 +1,14 @@
 import assert from "assert"; 
-import { isAuthorized, isAuthorizedAsync, setRoles } from "../../controllers/auth.controller";
+import { isAuthorized, isAuthorizedAsync, setRoles, deleteRoles } from "../../controllers/auth.controller";
 
 describe("AuthController", function() {
     beforeEach(function() {
-        console.log("runing before each");
         setRoles(['user']);
     });  
+
+    afterEach(function() {
+        deleteRoles();
+    })
 
     describe("isAuthorized", function() {
         it("Should return false if not authorized", function() {
@@ -13,7 +16,7 @@ describe("AuthController", function() {
         })
 
         it("Should return true if is authorized", function() {
-            setRoles(['user', 'admin']);
+            setRoles(['admin']);
             assert.equal(true, isAuthorized('admin'));
         })
     })
@@ -29,7 +32,7 @@ describe("AuthController", function() {
 
         it("Should return true if is authorizedAsync", function(done) {
             this.timeout(2500); 
-            setRoles(['user', 'admin']);
+            setRoles(['admin']);
             isAuthorizedAsync('admin', function(isAuth: Boolean){
                 assert.equal(true, isAuth);
                 done();

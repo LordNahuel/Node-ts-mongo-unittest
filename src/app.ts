@@ -7,7 +7,7 @@ import passportMiddleware from "./middlewares/passport";
 const app = express(); 
 
 // Imports routes
-import indexRoutes from "./routes/index.routes";
+import userRoutes from "./routes/user.routes";
 import authRoutes from "./routes/auth.routes"; 
 
 // Settings
@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 passport.use(passportMiddleware);
 
 // Routes 
-app.use(indexRoutes);
+app.use('/users', userRoutes);
 app.use('/auth/profile', authRoutes); 
 
-export default app; 
+export default app;     
